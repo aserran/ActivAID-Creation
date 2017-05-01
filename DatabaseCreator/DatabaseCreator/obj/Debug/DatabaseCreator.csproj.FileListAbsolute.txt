@@ -1,0 +1,8 @@
+C:\Users\Tony\Documents\Visual Studio 2017\Projects\DatabaseCreator\DatabaseCreator\bin\Debug\DatabaseCreator.exe.config
+C:\Users\Tony\Documents\Visual Studio 2017\Projects\DatabaseCreator\DatabaseCreator\bin\Debug\DatabaseCreator.exe
+C:\Users\Tony\Documents\Visual Studio 2017\Projects\DatabaseCreator\DatabaseCreator\bin\Debug\DatabaseCreator.pdb
+C:\Users\Tony\Documents\Visual Studio 2017\Projects\DatabaseCreator\DatabaseCreator\obj\Debug\DatabaseCreator.csprojResolveAssemblyReference.cache
+C:\Users\Tony\Documents\Visual Studio 2017\Projects\DatabaseCreator\DatabaseCreator\obj\Debug\DatabaseCreator.Properties.Resources.resources
+C:\Users\Tony\Documents\Visual Studio 2017\Projects\DatabaseCreator\DatabaseCreator\obj\Debug\DatabaseCreator.csproj.GenerateResource.Cache
+C:\Users\Tony\Documents\Visual Studio 2017\Projects\DatabaseCreator\DatabaseCreator\obj\Debug\DatabaseCreator.exe
+C:\Users\Tony\Documents\Visual Studio 2017\Projects\DatabaseCreator\DatabaseCreator\obj\Debug\DatabaseCreator.pdb
