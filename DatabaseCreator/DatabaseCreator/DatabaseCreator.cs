@@ -9,7 +9,8 @@ namespace DatabaseCreator
 {
     class DatabaseCreator
     {
-        public static string DB_NAME = "ActivAID";
+        public static string DB_NAME = Environment.GetEnvironmentVariable("DBNAME");
+        public static string DB_SERVER = Environment.GetEnvironmentVariable("SERVER");
         public static string DB_PATH = "C:\\data\\";
         /* Currently needs a data folder in C drive
          * need to replace with location of future ActivAID files*/
@@ -19,7 +20,7 @@ namespace DatabaseCreator
         private SqlConnection conn;
         private string elementsQuery = "CREATE TABLE Elements(elementId int, fileId int, blockNumber int, data varchar(MAX));";
         private string filesQuery = "CREATE TABLE Files(fileId int, filePath varchar(MAX), filename varchar(MAX));";
-        private string hyperlinksQuery = "CREATE TABLE Hyperlinks(hyperlinkId int, fileId int, filePath varchar(MAX), filename varchar(MAX));";
+        private string hyperlinksQuery = "CREATE TABLE Hyperlinks(hyperlinkId int, fileId int, filePath varchar(MAX), filename varchar(MAX), text varchar(MAX));";
         private string imagesQuery = "CREATE TABLE Images(imageId int, elementId int, elementImg varchar(MAX));";
 
         public DatabaseCreator()
@@ -41,17 +42,17 @@ namespace DatabaseCreator
             string sqlCreateString;
             conn = new SqlConnection("Server=localhost\\SQLEXPRESS;Integrated security=SSPI;database=master;");
 
-            sqlCreateString = " CREATE DATABASE "
-                                + DB_NAME + " ON PRIMARY "
-                                + " (NAME = " + DB_NAME + "_Data, "
+            sqlCreateString = "CREATE DATABASE ["
+                                + DB_NAME + "] ON PRIMARY "
+                                + " (NAME = [" + DB_NAME + "_Data], "
                                 + " FILENAME = '" + DB_PATH + DB_NAME + ".mdf', "
                                 + "SIZE = 5MB,"
                                 + " FILEGROWTH = 10%) "
-                                + " LOG ON (NAME =" + DB_NAME + "_Log, "
+                                + " LOG ON (NAME = [" + DB_NAME + "_Log], "
                                 + " FILENAME = '" + DB_PATH + DB_NAME + "Log.ldf', "
                                 + " SIZE = 1MB, "
                                 + " FILEGROWTH = 10%) ";
-
+            //sqlCreateString = "CREATE DATABASE " + DB_NAME + ";";
             SqlCommand comm = new SqlCommand(sqlCreateString, conn);
             try
             {
