@@ -78,7 +78,7 @@ namespace DatabaseCreator
 
         private void CreateTables()
         {
-            dbLocation = "Server=.\\SQLEXPRESS;Database = ActivAID;Integrated Security=true";
+            dbLocation = "Server=.\\SQLEXPRESS;Database = "+ DB_NAME + ";Integrated Security=true";
             builder = new SqlConnectionStringBuilder();
             //builder.DataSource = 
             using (conn = new SqlConnection(dbLocation))
