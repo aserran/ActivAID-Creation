@@ -18,10 +18,10 @@ namespace DatabaseCreator
         private string dbLocation;
         private SqlConnectionStringBuilder builder;
         private SqlConnection conn;
-        private string elementsQuery = "CREATE TABLE Elements(elementId int, fileId int, blockNumber int, data varchar(MAX));";
-        private string filesQuery = "CREATE TABLE Files(fileId int, filePath varchar(MAX), filename varchar(MAX));";
-        private string hyperlinksQuery = "CREATE TABLE Hyperlinks(hyperlinkId int, fileId int, filePath varchar(MAX), filename varchar(MAX), text varchar(MAX));";
-        private string imagesQuery = "CREATE TABLE Images(imageId int, elementId int, elementImg varchar(MAX));";
+        private string elementsQuery = "CREATE TABLE Elements(elementId int NOT NULL IDENTITY (1000,1), fileId int, blockNumber int, data varchar(MAX));";
+        private string filesQuery = "CREATE TABLE Files(fileId int NOT NULL IDENTITY (1,1), filePath varchar(MAX), filename varchar(MAX));";
+        private string hyperlinksQuery = "CREATE TABLE Hyperlinks(hyperlinkId int NOT NULL IDENTITY (100,10), fileId int, filePath varchar(MAX), filename varchar(MAX), text varchar(MAX));";
+        private string imagesQuery = "CREATE TABLE Images(imageId int NOT NULL IDENTITY (1,1), elementId int, elementImg varchar(MAX));";
 
         public DatabaseCreator()
         {
