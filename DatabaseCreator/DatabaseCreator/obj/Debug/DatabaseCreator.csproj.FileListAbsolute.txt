@@ -6,3 +6,11 @@ C:\Users\Tony\Documents\Visual Studio 2017\Projects\DatabaseCreator\DatabaseCrea
 C:\Users\Tony\Documents\Visual Studio 2017\Projects\DatabaseCreator\DatabaseCreator\obj\Debug\DatabaseCreator.csproj.GenerateResource.Cache
 C:\Users\Tony\Documents\Visual Studio 2017\Projects\DatabaseCreator\DatabaseCreator\obj\Debug\DatabaseCreator.exe
 C:\Users\Tony\Documents\Visual Studio 2017\Projects\DatabaseCreator\DatabaseCreator\obj\Debug\DatabaseCreator.pdb
+D:\SeniorDesign\ActivAID\CreateDatabase\DatabaseCreator\DatabaseCreator\bin\Debug\DatabaseCreator.exe.config
+D:\SeniorDesign\ActivAID\CreateDatabase\DatabaseCreator\DatabaseCreator\obj\Debug\DatabaseCreator.exe
+D:\SeniorDesign\ActivAID\CreateDatabase\DatabaseCreator\DatabaseCreator\obj\Debug\DatabaseCreator.pdb
+D:\SeniorDesign\ActivAID\CreateDatabase\DatabaseCreator\DatabaseCreator\bin\Debug\DatabaseCreator.exe
+D:\SeniorDesign\ActivAID\CreateDatabase\DatabaseCreator\DatabaseCreator\bin\Debug\DatabaseCreator.pdb
+D:\SeniorDesign\ActivAID\CreateDatabase\DatabaseCreator\DatabaseCreator\obj\Debug\DatabaseCreator.Properties.Resources.resources
+D:\SeniorDesign\ActivAID\CreateDatabase\DatabaseCreator\DatabaseCreator\obj\Debug\DatabaseCreator.csproj.GenerateResource.Cache
+D:\SeniorDesign\ActivAID\CreateDatabase\DatabaseCreator\DatabaseCreator\obj\Debug\DatabaseCreator.csprojResolveAssemblyReference.cache

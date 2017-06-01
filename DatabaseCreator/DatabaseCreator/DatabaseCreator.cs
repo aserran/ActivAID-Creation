@@ -9,9 +9,11 @@ namespace DatabaseCreator
 {
     class DatabaseCreator
     {
-        public static string DB_NAME = Environment.GetEnvironmentVariable("DBNAME");
-        public static string DB_SERVER = Environment.GetEnvironmentVariable("SERVER");
-        public static string DB_PATH = "C:\\data\\";
+        //public static string DB_NAME = Environment.GetEnvironmentVariable("DBNAME");
+        public static string DB_NAME = "ActivAID DB";
+        //public static string DB_SERVER = Environment.GetEnvironmentVariable("SERVER");
+        public static string DB_SERVER = "localhost\\SQLEXPRESS";
+        public static string DB_PATH = "C:\\Program Files\\Microsoft SQL Server\\MSSQL12.SQLEXPRESS\\MSSQL\\DATA\\";
         /* Currently needs a data folder in C drive
          * need to replace with location of future ActivAID files*/
         //public static string DB_PATH = "C:\\Program Files\\Microsoft SQL Server\\MSSQL12.SQLEXPRESS\\MSSQL\\DATA";
