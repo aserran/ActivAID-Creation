@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace DatabaseCreator
 {
@@ -20,6 +21,7 @@ namespace DatabaseCreator
         private string dbLocation;
         private SqlConnectionStringBuilder builder;
         private SqlConnection conn;
+        private SqlCommand comm;
         private string elementsQuery = "CREATE TABLE Elements(elementId int NOT NULL IDENTITY (1000,1), fileId int, blockNumber int, data varchar(MAX));";
         private string filesQuery = "CREATE TABLE Files(fileId int NOT NULL IDENTITY (1,1), filePath varchar(MAX), filename varchar(MAX));";
         private string hyperlinksQuery = "CREATE TABLE Hyperlinks(hyperlinkId int NOT NULL IDENTITY (100,10), fileId int, filePath varchar(MAX), filename varchar(MAX), text varchar(MAX));";
@@ -27,55 +29,78 @@ namespace DatabaseCreator
 
         public DatabaseCreator()
         {
+            // Create SqlConnection
+            conn = new SqlConnection("Server=localhost\\SQLEXPRESS;Integrated security=SSPI;database=master;");
+            conn.Open();
+
             bool result = CreateDatabase();
             if (result)
-            {
                 CreateTables();
-            }
             else
-            {
                 Console.WriteLine("Database not created.");
-            }
+
+            closeConnection();
+        }
+
+        private void closeConnection()
+        {
+            if (conn.State == System.Data.ConnectionState.Open)
+                conn.Close();
+
+            conn.Dispose();
         }
 
         public bool CreateDatabase()
         {
             bool status = true;
-            string sqlCreateString;
-            conn = new SqlConnection("Server=localhost\\SQLEXPRESS;Integrated security=SSPI;database=master;");
 
-            sqlCreateString = "CREATE DATABASE ["
-                                + DB_NAME + "] ON PRIMARY "
-                                + " (NAME = [" + DB_NAME + "_Data], "
-                                + " FILENAME = '" + DB_PATH + DB_NAME + ".mdf', "
-                                + "SIZE = 5MB,"
-                                + " FILEGROWTH = 10%) "
-                                + " LOG ON (NAME = [" + DB_NAME + "_Log], "
-                                + " FILENAME = '" + DB_PATH + DB_NAME + "Log.ldf', "
-                                + " SIZE = 1MB, "
-                                + " FILEGROWTH = 10%) ";
-            //sqlCreateString = "CREATE DATABASE " + DB_NAME + ";";
-            SqlCommand comm = new SqlCommand(sqlCreateString, conn);
+            //sqlCreateString = "CREATE DATABASE ["
+            //                    + DB_NAME + "] ON PRIMARY "
+            //                    + " (NAME = [" + DB_NAME + "_Data], "
+            //                    + " FILENAME = '" + DB_PATH + DB_NAME + ".mdf', "
+            //                    + "SIZE = 5MB,"
+            //                    + " FILEGROWTH = 10%) "
+            //                    + " LOG ON (NAME = [" + DB_NAME + "_Log], "
+            //                    + " FILENAME = '" + DB_PATH + DB_NAME + "Log.ldf', "
+            //                    + " SIZE = 1MB, "
+            //                    + " FILEGROWTH = 10%) ";
+
+            string sqlCreateString = "CREATE DATABASE [" + DB_NAME + "]";
+            comm = new SqlCommand(sqlCreateString, conn);
             try
             {
-                conn.Open();
                 comm.ExecuteNonQuery();
             }
-            catch (System.Exception)
+            catch (SqlException e)
             {
-                throw;
-                Console.WriteLine("Database string not right.");
-                status = false;
-            }
-            finally
-            {
-                if (conn.State == System.Data.ConnectionState.Open)
+                if (e.Number == 1801)   // Database already exist error
                 {
-                    conn.Close();
+                    dropDatabase();
+                    status = CreateDatabase();
+                    return status;
                 }
-                conn.Dispose();
+                else {
+                    MessageBox.Show(e.ToString(), "Unable to Create Database", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    status = false;
+                }
             }
+            // Connection gets closed when constuctor finishes
             return status;                
+        }
+
+        private void dropDatabase()
+        {
+            string sqlCreateString;
+            try
+            {
+                sqlCreateString = "DROP DATABASE [" + DB_NAME + "]";
+                comm = new SqlCommand(sqlCreateString, conn);
+                comm.ExecuteNonQuery();
+            }
+            catch (System.Exception se)
+            {
+                MessageBox.Show(se.ToString(), "Unable to Create Database", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void CreateTables()
