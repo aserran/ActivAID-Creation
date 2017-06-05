@@ -12,12 +12,7 @@ namespace DatabaseCreator
     {
         //public static string DB_NAME = Environment.GetEnvironmentVariable("DBNAME");
         public static string DB_NAME = "ActivAID DB";
-        //public static string DB_SERVER = Environment.GetEnvironmentVariable("SERVER");
-        public static string DB_SERVER = "localhost\\SQLEXPRESS";
-        public static string DB_PATH = "C:\\Program Files\\Microsoft SQL Server\\MSSQL12.SQLEXPRESS\\MSSQL\\DATA\\";
-        /* Currently needs a data folder in C drive
-         * need to replace with location of future ActivAID files*/
-        //public static string DB_PATH = "C:\\Program Files\\Microsoft SQL Server\\MSSQL12.SQLEXPRESS\\MSSQL\\DATA";
+        public static string serverName = Environment.GetEnvironmentVariable("SERVER");
         private string dbLocation;
         private SqlConnectionStringBuilder builder;
         private SqlConnection conn;
@@ -30,7 +25,7 @@ namespace DatabaseCreator
         public DatabaseCreator()
         {
             // Create SqlConnection
-            conn = new SqlConnection("Server=localhost\\SQLEXPRESS;Integrated security=SSPI;database=master;");
+            conn = new SqlConnection("Server="+serverName+";Integrated security=SSPI;database=master;");
             conn.Open();
 
             bool result = CreateDatabase();
@@ -53,17 +48,6 @@ namespace DatabaseCreator
         public bool CreateDatabase()
         {
             bool status = true;
-
-            //sqlCreateString = "CREATE DATABASE ["
-            //                    + DB_NAME + "] ON PRIMARY "
-            //                    + " (NAME = [" + DB_NAME + "_Data], "
-            //                    + " FILENAME = '" + DB_PATH + DB_NAME + ".mdf', "
-            //                    + "SIZE = 5MB,"
-            //                    + " FILEGROWTH = 10%) "
-            //                    + " LOG ON (NAME = [" + DB_NAME + "_Log], "
-            //                    + " FILENAME = '" + DB_PATH + DB_NAME + "Log.ldf', "
-            //                    + " SIZE = 1MB, "
-            //                    + " FILEGROWTH = 10%) ";
 
             string sqlCreateString = "CREATE DATABASE [" + DB_NAME + "]";
             comm = new SqlCommand(sqlCreateString, conn);
@@ -105,7 +89,7 @@ namespace DatabaseCreator
 
         private void CreateTables()
         {
-            dbLocation = "Server=.\\SQLEXPRESS;Database = "+ DB_NAME + ";Integrated Security=true";
+            dbLocation = "Server="+serverName+";Database = "+ DB_NAME + ";Integrated Security=true";
             builder = new SqlConnectionStringBuilder();
             //builder.DataSource = 
             using (conn = new SqlConnection(dbLocation))
