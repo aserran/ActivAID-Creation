@@ -14,7 +14,6 @@ namespace DatabaseCreator
         public static string DB_NAME = "ActivAID DB";
         public static string serverName = Environment.GetEnvironmentVariable("SERVER");
         private string dbLocation;
-        private SqlConnectionStringBuilder builder;
         private SqlConnection conn;
         private SqlCommand comm;
         private string elementsQuery = "CREATE TABLE Elements(elementId int NOT NULL IDENTITY (1000,1), fileId int, blockNumber int, data varchar(MAX));";
@@ -90,8 +89,6 @@ namespace DatabaseCreator
         private void CreateTables()
         {
             dbLocation = "Server="+serverName+";Database = "+ DB_NAME + ";Integrated Security=true";
-            builder = new SqlConnectionStringBuilder();
-            //builder.DataSource = 
             using (conn = new SqlConnection(dbLocation))
             {
                 conn.Open();
