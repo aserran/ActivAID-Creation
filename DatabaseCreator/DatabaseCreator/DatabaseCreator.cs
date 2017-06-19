@@ -12,7 +12,8 @@ namespace DatabaseCreator
     {
         //public static string DB_NAME = Environment.GetEnvironmentVariable("DBNAME");
         public static string DB_NAME = "ActivAID DB";
-        public static string serverName = Environment.GetEnvironmentVariable("SERVER");
+        //public static string serverName = Environment.GetEnvironmentVariable("SERVER");
+        public static string serverName = "localhost\\SQLEXPRESS";
         private string dbLocation;
         private SqlConnection conn;
         private SqlCommand comm;

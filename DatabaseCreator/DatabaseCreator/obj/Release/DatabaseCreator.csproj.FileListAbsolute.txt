@@ -5,3 +5,4 @@ D:\SeniorDesign\ActivAID\CreateDatabase\DatabaseCreator\DatabaseCreator\obj\Rele
 D:\SeniorDesign\ActivAID\CreateDatabase\DatabaseCreator\DatabaseCreator\obj\Release\DatabaseCreator.csproj.GenerateResource.Cache
 D:\SeniorDesign\ActivAID\CreateDatabase\DatabaseCreator\DatabaseCreator\obj\Release\DatabaseCreator.exe
 D:\SeniorDesign\ActivAID\CreateDatabase\DatabaseCreator\DatabaseCreator\obj\Release\DatabaseCreator.pdb
+D:\SeniorDesign\ActivAID\CreateDatabase\DatabaseCreator\DatabaseCreator\obj\Release\DatabaseCreator.csprojResolveAssemblyReference.cache
